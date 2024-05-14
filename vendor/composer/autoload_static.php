@@ -16,10 +16,7 @@ class ComposerStaticInitb3661bc7a0aea1580bc81167fc2c27c1
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\VarDumper\\' => 28,
-        ),
-        'L' => 
-        array (
-            'Lana\\Untitled2\\' => 15,
+            'Src\\' => 4,
         ),
     );
 
@@ -32,7 +29,7 @@ class ComposerStaticInitb3661bc7a0aea1580bc81167fc2c27c1
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
         ),
-        'Lana\\Untitled2\\' => 
+        'Src\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

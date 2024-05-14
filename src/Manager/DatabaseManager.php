@@ -7,22 +7,25 @@ use PDO;
 
 class DatabaseManager
 {
+    private PDO $connection;
 
+    public function getConnection(): PDO
+    {
+        return $this->connection;
+    }
     public function __construct()
     {
         try {
 
             $host = "localhost";
-            $databaseName = "Pressing_Laetitia_Bernard";
+            $databaseName = "pressing";
             $user = "root";
             $password = "root";
 
 
-            $pdo = new PDO("mysql:host=" . $host . ";port=3306;dbname=" . $databaseName . ";charset=utf8", $user, $password);
+            $this->connection = new PDO("mysql:host=" . $host . ";port=3306;dbname=" . $databaseName . ";charset=utf8", $user, $password);
 
-            $this->configPdo($pdo);
 
-            return $pdo;
 
         } catch (Exception $e) {
 
@@ -35,12 +38,12 @@ class DatabaseManager
         }
     }
 
-    function configPdo(PDO $pdo): void
+    function configPdo(): void
     {
         // Recevoir les erreurs PDO ( coté SQL )
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         // Choisir les indices dans les fetchs
-        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     }
 
 }

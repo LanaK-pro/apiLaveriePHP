@@ -2,7 +2,13 @@
 
 namespace Src\Entity;
 
-class Service
+use JsonSerializable;
+
+/**
+ * Service represente une occurence de la table Service sous forme d'objet PHP
+ */
+
+class Service implements JsonSerializable
 {
     private int $service_id;
     private string $service_name;
@@ -15,6 +21,19 @@ class Service
         $this->service_name = $service_name;
         $this->service_price = $service_price;
     }
+
+    public function jsonSerialize(): mixed
+    {
+        return [
+            "id" => $this->getServiceId(),
+            "name" => $this->getServiceName(),
+            "price" => $this->getServicePrice()
+        ];
+    }
+    static public function fromArray($array):self{
+        return new self($array["service_id"], $array["service_name"], $array["service_price"]);
+    }
+
 
     public function getServiceId(): int
     {
